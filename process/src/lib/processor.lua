@@ -50,6 +50,7 @@ function tradeProcessor(msg)
         status = OrderStatus.PENDING
     }
     -- This is where we would place the order in dexes
+    
     saveOrder(order)
     sendReply(msg, order)
 end
