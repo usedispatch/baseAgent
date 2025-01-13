@@ -29,11 +29,13 @@ A decentralized trading agent built with AO and Lua. This application implements
 ## 🛠️ Trading Strategies
 
 ### Dollar-Cost Averaging (DCA)
+
 - Invests fixed amounts at regular intervals
 - Configurable investment amount and intervals
 - Helps average out purchase prices over time
 
 ### Value Averaging (VA)
+
 - Targets specific portfolio value growth
 - Dynamically adjusts investment based on market conditions
 - Buys more when prices are low, sells when high
@@ -55,16 +57,19 @@ VA_CONFIG = {
 ## 🔧 Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/yourusername/tradeAgent.git
    ```
 
 2. Install dependencies:
+
    ```bash
    yarn install
    ```
 
 3. Build the AO process:
+
    ```bash
    yarn build:process
    ```
@@ -77,6 +82,7 @@ VA_CONFIG = {
 ## 🧪 Testing
 
 To run the test suite:
+
 ```bash
 yarn test:process
 ```
@@ -91,17 +97,10 @@ The trading agent processes trades through message handlers:
 - `getOrders` - View order history
 - `trade` - Execute trades based on current strategy
 
-## ⚠️ Risk Management
-
-- The agent includes built-in risk management:
-  - Maximum investment limits per trade
-  - Minimum trade size requirements
-  - Holdings tracking
-  - Balance validation
-
 ## 🤝 Contributing
 
 Contributions are welcome! Feel free to:
+
 - Add new trading strategies
 - Improve existing strategies
 - Enhance risk management
