@@ -1,4 +1,5 @@
-version 0.1
+version 0.2
+
 # Trading Agent
 
 A decentralized trading agent built with AO and Lua. This application implements various trading strategies including DCA (Dollar-Cost Averaging) and Value Averaging using AO's permanent computation network.
