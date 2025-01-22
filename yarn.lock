@@ -30,10 +30,10 @@
     warp-arbundles "^1.0.4"
     zod "^3.23.8"
 
-aoform@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/aoform/-/aoform-1.0.5.tgz#dc21febc71af9a8f0016ac28b59ceaa0a6cc5cf4"
-  integrity sha512-QEulgz/7qz1nIM6uxberO+lUfIMVeKvbYn/euZpkjJsoS0dUmLbOhRtsWyYnGpHteHnp0D9M1UM/uXE9PNE5WQ==
+aoform@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/aoform/-/aoform-1.0.7.tgz#fc5e1734e04478831f30e27a1df0fbb324e142ab"
+  integrity sha512-rpxYY/Jvgv5Z8L5gDo3P1/unGBj+2naWHyzW8yvsjky7IzILQuFJl5HY9zCmgXhQ0cMF5l1e4OdWYkhCVR1tjw==
   dependencies:
     "@permaweb/aoconnect" "^0.0.59"
     commander "^12.0.0"

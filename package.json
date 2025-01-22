@@ -17,6 +17,6 @@
     "test:process": "yarn restore:process && cd test && yarn test"
   },
   "devDependencies": {
-    "aoform": "^1.0.5"
+    "aoform": "^1.0.7"
   }
 }
