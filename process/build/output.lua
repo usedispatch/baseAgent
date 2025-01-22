@@ -3,6 +3,7 @@ local json = require("json")
 DB = DB or sqlite3.open_memory()
 DbAdmin = require('DbAdmin').new(DB)
 local amount = 0;
+local shouldTrade = false;
 
 function Configure()
     
@@ -35,7 +36,6 @@ local OrderStatus = {
 
 
 
-
 local function sendReply(msg, data)
     msg.reply({Data = data, Action = msg.Action .. "Response"})
 end
@@ -57,6 +57,16 @@ local function validate_order(state, action, quantity, price)
         return state.holdings >= quantity
     end
     return false
+end
+
+
+
+local function should_trade(current_price)
+    
+end
+
+local function calculate_quantity(action, current_price)
+    
 end
 
 function saveOrder(order)
@@ -96,16 +106,13 @@ function updateOrderStatus(orderId, status)
     )
 end
 
--- Add new todo
-function testProcessor(msg)
-    local uuid = generate_uuid()
-    sendReply(msg, uuid)
-end
+
 
 function depositProcessor(msg)
     local data = json.decode(msg.Data)
     amount = amount + data.amount
     sendReply(msg, amount)
+    shouldTrade = true
 end
 
 
@@ -113,32 +120,58 @@ function withdrawProcessor(msg)
     local data = json.decode(msg.Data)
     amount = amount - data.amount
     sendReply(msg, amount)
+    
+end
+
+function getDepositProcessor(msg)
+    sendReply(msg, amount)
+end
+
+function getOrdersProcessor(msg)
+    local orders = getOrders()
+    sendReply(msg, orders)
+end
+
+
+function tradeProcessor(msg)
+    local data = json.decode(msg.Data)
+    currentPrice = data.price
+    if shouldTrade == false or amount <= 0 then
+        sendReply(msg, "Not trading")
+    end
+
+    if not current_price then
+        sendReply(msg, "Current price is required")
+    end
+
+    local action = should_trade(current_price)
+    local quantity = calculate_quantity(action, current_price)
+    if quantity <= 0 then
+        sendReply(msg, "No quantity to trade")
+    end
+    local order = {
+        id = generate_uuid(),
+        action = action,
+        price = current_price,
+        quantity = quantity,
+        timestamp = os.time(),
+        status = OrderStatus.PENDING
+    }
+    -- This is where we would place the order in dexes
+    
+    saveOrder(order)
+    sendReply(msg, order)
 end
 
 
 
--- -- Get all todos
--- function getTodosProcessor(msg)
---     local data = getTodos()
---     print(data)
---     sendReply(msg, data)
--- end
 
--- -- Update todo
--- function updateTodoProcessor(msg)
---     local data = json.decode(msg.Data)
---     updateTodo(data)
---     sendReply(msg, data)
--- end
-
--- -- Delete todo
--- function deleteTodoProcessor(msg)
---     local data = json.decode(msg.Data)
---     deleteTodo(data.id)
---     sendReply(msg, {success = true})
--- end
 
 -- Register handlers
-Handlers.add("Test", testProcessor)
 Handlers.add("deposit",depositProcessor)
 Handlers.add("withdraw",withdrawProcessor)
+Handlers.add("getBalance",getDepositProcessor)
+Handlers.add("getOrders",getOrdersProcessor)
+Handlers.add("trade",tradeProcessor)
+
+
