@@ -77,6 +77,7 @@ VA_CONFIG = {
    ```
 
 4. Deploy the AO process:
+   before doing the deploy add the wallet using `export WALLET_JSON="$(cat ~/.aos.json)"`
    ```bash
    yarn deploy:process
    ```
