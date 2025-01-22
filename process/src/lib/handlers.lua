@@ -1,8 +1,8 @@
 -- Register handlers
-Handlers.add("deposit",depositProcessor)
-Handlers.add("withdraw",withdrawProcessor)
-Handlers.add("getBalance",getDepositProcessor)
-Handlers.add("getOrders",getOrdersProcessor)
-Handlers.add("trade",tradeProcessor)
+Handlers.add("deposit",depositHandler)
+Handlers.add("withdraw",withdrawHandler)
+Handlers.add("getBalance",getDepositHandler)
+Handlers.add("getOrders",getOrdersHandler)
+Handlers.add("trade",tradeHandler)
 
 

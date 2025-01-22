@@ -13,7 +13,7 @@
     "undo_aos_deploy:process": "lua process/scripts/replace.lua",
     "dev:frontend": "cd app && yarn dev",
     "build:frontend": "cd app && yarn build",
-    "clean:process": "rm -rf process/build",
+    "clean:process": "rm -rf process/.build",
     "test:process": "yarn restore:process && cd test && yarn test"
   },
   "devDependencies": {

@@ -1,13 +1,9 @@
 local sqlite3 = require("lsqlite3")
 local json = require("json")
 DB = DB or sqlite3.open_memory()
-DbAdmin = require('DbAdmin').new(DB)
+DbAdmin = dbAdmin.new(DB)
 local amount = 0;
 local shouldTrade = false;
-VCALC = {
-    price = 0,
-    quantity = 0,
-}
 
 function Configure()
     
@@ -127,8 +123,7 @@ function withdrawHandler(msg)
     
 end
 
-
-function getBalanceHandler(msg)
+function getDepositHandler(msg)
     sendReply(msg, amount)
 end
 
@@ -175,7 +170,7 @@ end
 -- Register handlers
 Handlers.add("deposit",depositHandler)
 Handlers.add("withdraw",withdrawHandler)
-Handlers.add("getBalance",getBalanceHandler)
+Handlers.add("getBalance",getDepositHandler)
 Handlers.add("getOrders",getOrdersHandler)
 Handlers.add("trade",tradeHandler)
 

@@ -1,6 +1,6 @@
 
 
-function depositProcessor(msg)
+function depositHandler(msg)
     local data = json.decode(msg.Data)
     amount = amount + data.amount
     sendReply(msg, amount)
@@ -8,24 +8,24 @@ function depositProcessor(msg)
 end
 
 
-function withdrawProcessor(msg)
+function withdrawHandler(msg)
     local data = json.decode(msg.Data)
     amount = amount - data.amount
     sendReply(msg, amount)
     
 end
 
-function getDepositProcessor(msg)
+function getDepositHandler(msg)
     sendReply(msg, amount)
 end
 
-function getOrdersProcessor(msg)
+function getOrdersHandler(msg)
     local orders = getOrders()
     sendReply(msg, orders)
 end
 
 
-function tradeProcessor(msg)
+function tradeHandler(msg)
     local data = json.decode(msg.Data)
     currentPrice = data.price
     if shouldTrade == false or amount <= 0 then

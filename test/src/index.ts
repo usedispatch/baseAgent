@@ -9,7 +9,7 @@ describe("Tests", () => {
 
   before(async () => {
     const source = fs.readFileSync(
-      path.join(__dirname, "../../process/build/output.lua"),
+      path.join(__dirname, "../../process/.build/output.lua"),
       "utf-8"
     );
     env = new aos(source);
@@ -18,7 +18,7 @@ describe("Tests", () => {
 
   test("load DbAdmin module", async () => {
     const dbAdminCode = fs.readFileSync(
-      path.join(__dirname, "../../process/build/dbAdmin.lua"),
+      path.join(__dirname, "../../process/.build/dbAdmin.lua"),
       "utf-8"
     );
     const result = await env.send({
@@ -37,7 +37,7 @@ describe("Tests", () => {
 
   test("load source", async () => {
     const code = fs.readFileSync(
-      path.join(__dirname, "../../process/build/output.lua"),
+      path.join(__dirname, "../../process/.build/output.lua"),
       "utf-8"
     );
     const result = await env.send({ Action: "Eval", Data: code });

@@ -11,8 +11,8 @@ local function writeFile(path, content)
     file:close()
 end
 
-local outputPath = "process/build/output.lua"
-local dbAdminPath = "process/build/dbAdmin.lua"
+local outputPath = "process/.build/output.lua"
+local dbAdminPath = "process/src/external/dbAdmin.lua"
 local content = readFile(outputPath)
 local dbAdminContent = readFile(dbAdminPath)
 
