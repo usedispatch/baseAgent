@@ -79,6 +79,24 @@ VA_CONFIG = {
    yarn deploy:process
    ```
 
+# Using aos for deployment
+
+1. install the DbAdmin package first using apm
+
+```
+.editor
+.load-blueprint apm
+apm.install "@rakis/DbAdmin"
+apm.install "@rakis/test-unit"
+.done
+```
+
+1. run the `yarn run setup_aos_deploy:process` command to modify the dbAdmin import statement before deploying the process.
+
+2. .load /path/to_file/process.js
+
+Note: Do not run the yarn build:process command after running the restore:process command because it is going to replace the import statement for dbAdmin and deployments using aos will fail.
+
 ## 🧪 Testing
 
 To run the test suite:
@@ -86,6 +104,17 @@ To run the test suite:
 ```bash
 yarn test:process
 ```
+
+# Testing using aos
+
+We have a script called test.sh which takes in the Action name and data from data.txt which should be in json format. To run the script with new data you have to modify the data.txt file.
+
+chmod +x test.sh
+./test.sh <action>
+
+Example:
+
+./test.sh deposit
 
 ## 📝 Usage
 

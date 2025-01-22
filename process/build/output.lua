@@ -1,7 +1,7 @@
 local sqlite3 = require("lsqlite3")
 local json = require("json")
 DB = DB or sqlite3.open_memory()
-DbAdmin = require('DbAdmin').new(DB)
+DbAdmin = dbAdmin.new(DB)
 local amount = 0;
 local shouldTrade = false;
 
