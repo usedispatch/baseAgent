@@ -89,7 +89,6 @@ VA_CONFIG = {
 .editor
 .load-blueprint apm
 apm.install "@rakis/DbAdmin"
-apm.install "@rakis/test-unit"
 .done
 ```
 
@@ -117,6 +116,10 @@ chmod +x test.sh
 Example:
 
 ./test.sh deposit
+
+```
+Send({Target="fH6VuQA4eeCBPRiuNxssKnmU4AaU3MRJv0umoi3iavk",Action="getOrders",Data=""})
+```
 
 ## 📝 Usage
 
