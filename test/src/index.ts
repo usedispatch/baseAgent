@@ -18,7 +18,7 @@ describe("Tests", () => {
 
   test("load DbAdmin module", async () => {
     const dbAdminCode = fs.readFileSync(
-      path.join(__dirname, "../../process/.build/dbAdmin.lua"),
+      path.join(__dirname, "../../process/src/external/dbAdmin.lua"),
       "utf-8"
     );
     const result = await env.send({
