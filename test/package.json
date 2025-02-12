@@ -13,6 +13,7 @@
     "test": "FORMAT=wasm32-unknown-emscripten2 WASM=./process-sqlite.wasm node --experimental-wasm-memory64 --import tsx --test src/index.ts"
   },
   "dependencies": {
-    "@permaweb/ao-loader": "^0.0.43"
+    "@permaweb/ao-loader": "^0.0.43",
+    "@permaweb/aoconnect": "^0.0.68"
   }
 }

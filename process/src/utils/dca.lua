@@ -21,31 +21,26 @@ local function validate_order(state, action, quantity, price)
     return false
 end
 
--- DCA Strategy Configuration
-local DCA_CONFIG = {
-    investment_amount = 100,  -- Fixed amount to invest each time
-    min_price_change = 0.02,  -- Minimum price change (2%) to trigger a buy
-    max_single_investment = 500  -- Maximum amount for a single investment
-}
+
 
 local last_trade_price = nil
 
 local function should_trade(current_price)
-    if not last_trade_price then
-        last_trade_price = current_price
-        return Action.BUY
+    -- Check if we've reached the total number of orders
+    if DCA_CONFIG.orders_executed >= DCA_CONFIG.total_orders then
+        return nil
     end
 
-    -- Calculate price change percentage
-    local price_change = (current_price - last_trade_price) / last_trade_price
-
-    -- Buy when price drops by the minimum threshold
-    if price_change <= -DCA_CONFIG.min_price_change then
-        last_trade_price = current_price
-        return Action.BUY
+    -- Check if enough time has passed since last order
+    local current_time = os.time()
+    if current_time - DCA_CONFIG.last_order_time < DCA_CONFIG.interval_seconds then
+        return nil
     end
 
-    return nil
+    -- Update last trade time and increment order count
+    DCA_CONFIG.last_order_time = current_time
+    DCA_CONFIG.orders_executed = DCA_CONFIG.orders_executed + 1
+    return Action.BUY
 end
 
 local function calculate_quantity(action, current_price)

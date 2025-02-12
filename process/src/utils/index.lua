@@ -2,6 +2,9 @@ local function sendReply(msg, data)
     msg.reply({Data = data, Action = msg.Action .. "Response"})
 end
 
+
+
+
 -- Helper function to generate UUID-like strings
 local function generate_uuid()
     local template = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
@@ -23,10 +26,3 @@ end
 
 
 
-local function should_trade(current_price)
-    
-end
-
-local function calculate_quantity(action, current_price)
-    
-end

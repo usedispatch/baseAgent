@@ -1,10 +1,9 @@
 function saveOrder(order)
     DbAdmin:apply(
-        'INSERT INTO Orders (id, action, price, quantity, timestamp, status) VALUES (?, ?, ?, ?, ?, ?)',
+        'INSERT INTO Orders (id, action, quantity, timestamp, status) VALUES (?, ?, ?, ?, ?)',
         {
             order.id,
             order.action,
-            order.price,
             order.quantity,
             order.timestamp,
             order.status
