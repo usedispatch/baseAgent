@@ -6,9 +6,6 @@ function(msg)
         msg.Tags["X-Action"] == "deposit"
   end,
 depositHandler)
-Handlers.add("withdraw",withdrawHandler)
 Handlers.add("getBalance",getBalanceHandler)
 Handlers.add("getOrders",getOrdersHandler)
 Handlers.add("trade",tradeHandler)
-
-

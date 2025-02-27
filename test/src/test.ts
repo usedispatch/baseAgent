@@ -4,8 +4,9 @@ const aosConfig = require("/Users/pratik/development/work/usedispatch/amm/arwall
 // console.log(aosConfig);
 const dataItemSigner = createDataItemSigner(aosConfig);
 
-const DCA_PROCESS = "azpJbuFzFec4vUa79TQ9ZUFK5jm44VDeHlBc59GWVNo";
+const DCA_PROCESS = "V61ttgXklJOMXR7dJoNI-vs91gLD6VuP_3VE2noOOX0";
 const QUOTE_TOKEN_PROCESS = "susX6iEMMuxJSUnVGXaiEu9PwOeFpIwx4mj1k4YiEBk";
+const BONDING_CURVE_PROCESS = "KKhElSLcvqeP49R96qXaRokb1bu1qPBKx2MyFsRxIl4";
 const to18Decimals = (num: number): string => {
   // Handle negative numbers
   const isNegative = num < 0;
@@ -23,11 +24,6 @@ const to18Decimals = (num: number): string => {
 
 describe("Tests", () => {
   test("deposit", async () => {
-    const data = {
-      orders: 2,
-      interval: 36000,
-    };
-
     const res = await message({
       process: QUOTE_TOKEN_PROCESS,
       signer: dataItemSigner,
@@ -40,7 +36,7 @@ describe("Tests", () => {
           name: "Recipient",
           value: DCA_PROCESS,
         },
-        { name: "Quantity", value: to18Decimals(100000) },
+        { name: "Quantity", value: to18Decimals(1000) },
         {
           name: "X-Action",
           value: "deposit",
@@ -52,6 +48,10 @@ describe("Tests", () => {
         {
           name: "X-Interval",
           value: "36000",
+        },
+        {
+          name: "X-Bonding-Curve",
+          value: BONDING_CURVE_PROCESS,
         },
       ],
     });
@@ -68,19 +68,31 @@ describe("Tests", () => {
       ],
     });
 
-    console.log("getBalance res", res.Messages[0].Data);
+    console.log("getBalance res", res.Messages[0]);
   });
-  test("trade", async () => {
-    const res = await message({
+  // test("trade", async () => {
+  //   const res = await message({
+  //     process: DCA_PROCESS,
+  //     signer: dataItemSigner,
+  //     tags: [
+  //       {
+  //         name: "Action",
+  //         value: "Cron",
+  //       },
+  //     ],
+  //   });
+  //   console.log("trade res", res);
+  // });
+  test("getOrders", async () => {
+    const res = await dryrun({
       process: DCA_PROCESS,
-      signer: dataItemSigner,
       tags: [
         {
           name: "Action",
-          value: "trade",
+          value: "getOrders",
         },
       ],
     });
-    console.log("trade res", res);
+    console.log("getOrders res", res.Messages[0]);
   });
 });

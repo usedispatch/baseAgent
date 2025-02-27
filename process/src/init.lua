@@ -1,7 +1,7 @@
 local sqlite3 = require("lsqlite3")
 local json = require("json")
 DB = DB or sqlite3.open_memory()
-DbAdmin = require('DbAdmin').new(DB)
+DbAdmin = require('@rakis/DbAdmin').new(DB)
 local shouldTrade = false;
 QUOTE_TOKEN_PROCESS = "susX6iEMMuxJSUnVGXaiEu9PwOeFpIwx4mj1k4YiEBk";
 ISSUED_TOKEN_PROCESS = nil;
@@ -16,7 +16,6 @@ DCA_CONFIG = {
 }
 
 function Configure()
-    
     DbAdmin:exec[[
         CREATE TABLE IF NOT EXISTS Orders (
             id TEXT PRIMARY KEY,
@@ -26,20 +25,7 @@ function Configure()
             status TEXT NOT NULL
         );
         ]]
-
     Configured = true
 end
 
 if not Configured then Configure() end
-
-local Action = {
-    BUY = "BUY",
-    SELL = "SELL"
-}
-
-local OrderStatus = {
-    PENDING = "PENDING",
-    FILLED = "FILLED",
-    CANCELLED = "CANCELLED"
-}
-

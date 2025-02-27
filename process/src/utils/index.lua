@@ -2,9 +2,6 @@ local function sendReply(msg, data)
     msg.reply({Data = data, Action = msg.Action .. "Response"})
 end
 
-
-
-
 -- Helper function to generate UUID-like strings
 local function generate_uuid()
     local template = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
@@ -23,6 +20,3 @@ local function validate_order(state, action, quantity, price)
     end
     return false
 end
-
-
-

@@ -144,3 +144,11 @@ Contributions are welcome! Feel free to:
 ## 📜 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+Original.lua is the main code
+
+// do this to run the test.ts file
+
+```
+npx tsx src/test.ts
+```
